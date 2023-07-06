@@ -8,22 +8,12 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <form action="index.php?controller=categories&action=addCategory" method="POST">
-                        <div class="card-body">
-                            <?php
-                            if (isset($alert['success'])) { ?>
-                                <div class="form-group alert alert-primary">
-                                    <?= $alert['success'] ?>
-                                </div>
-                            <?php }
-                            ?>
+                        <div class="card-body">      
                             <div class="row mb-3">
-
                                 <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="name" id="name" placeholder="Tên" />
-
                                 </div>
-
                             </div>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="basic-default-message">Status</label>

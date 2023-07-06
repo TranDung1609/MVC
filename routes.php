@@ -3,8 +3,8 @@ $controllers = array(
   'pages' => ['home', 'error'],
   'categories' => ['index','addCategory','addCate', 'editCategory', 'updateCategory','deleteCategory'],
   'auth' => ['register','singUp','login','signIn','abc'],
-  'users' => ['create','index','editUser','deleteUser','addUser'],
-  'posts' => ['addPost','index','createPost']
+  'users' => ['create','index','editUser','deleteUser','addUser','updateUser'],
+  'posts' => ['addPost','index','createPost','editPost','deletePost','updatePost']
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 
 // Nếu các tham số nhận được từ URL không hợp lệ (không thuộc list controller và action có thể gọi

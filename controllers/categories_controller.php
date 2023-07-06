@@ -2,7 +2,6 @@
 require_once('controllers/base_controller.php');
 require_once('models/category.php');
 
-
 class CategoriesController extends BaseController
 {
     function __construct()
@@ -12,6 +11,9 @@ class CategoriesController extends BaseController
 
     public function index()
     { 
+        $category = new Category();
+        $categories = $category->listCategory();
+        $_SESSION['listCategory'] = $categories;
         $this->render('list_category');
     }
     public function addCate()
@@ -31,7 +33,7 @@ class CategoriesController extends BaseController
             if ($name && $status) {
                 $newCategory->insertCategory($name, $status);
                 $alert['success'] = 'Thêm thành công';
-                $this->render('list_category');
+                header('location: index.php?controller=categories&action=index');
             }else {
                 $this->render('add_category');
             }
@@ -41,14 +43,34 @@ class CategoriesController extends BaseController
     }
     public function editCategory()
     {
-        // $category = (new Category())->getCategory($id);
-        $this->render('edit_category');
-    }
+        $category = new Category();
 
-    // public function updateCategory()
-    // {
-    //     $this->render('list_category');
-    // }
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $data = $category->getCategory($id);
+            $_SESSION['editCategory'] = $data;
+            $this->render('edit_category');
+        } else {
+            $this->render('list_category');
+        }
+    } 
+
+    public function updateCategory()
+    {
+        $category = new Category;
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            if (isset($_POST['editCategory'])) {
+                $name = $_POST['name'];
+                $status = $_POST['status'];
+                $category->editCate($id, $name, $status);
+                header('location: index.php?controller=categories&action=index');
+            }
+            
+        }
+    }
 
     public function deleteCategory(){
         $category = new Category();

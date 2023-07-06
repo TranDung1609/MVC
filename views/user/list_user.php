@@ -1,7 +1,3 @@
-<?php require_once('models/user.php'); ?>
-<?php $user = new User(); 
-
-?>
 <div class="main-content">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> List Users</h4>
 
@@ -19,28 +15,27 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                <?php
-                    $show_user = $user->listUser();
-                    if ($show_user) {
-                        $i = 0;
-                        while ($result = $show_user->fetch_assoc()) {
-                            $i++;
-                    ?>
-                    <tr>
-                        <td><?php echo $result['id'] ?></td>
-                        <td><?php echo $result['name'] ?></td>
-                        <td><?php echo $result['email'] ?></td>
+                    <?php
+                        $i = 1;
+                        foreach ($_SESSION['listUser'] as $user) {
+                        ?> <tr>
+                        <td><?php echo $i++; ?></td>
+                        <!-- <td><?php echo $user['id'] ?></td> -->
+                        <td><?php echo $user['name'] ?></td>
+                        <td><?php echo $user['email'] ?></td>
                         <td>
                             <div>
-                                <a class="btn btn-sm btn-primary" href="index.php?controller=users&action=editUser&id=<?php echo $result['id']; ?>">
+                                <a class="btn btn-sm btn-primary" href="index.php?controller=users&action=editUser&id=<?php echo $user['id']; ?>">
                                     <i class="bx bx-edit-alt me-1"></i> Edit</a>
                                 <a onclick="return confirm('Bạn có muốn xoá user này không?')" class="btn btn-sm btn-danger" 
-                                href="index.php?controller=users&action=deleteUser&id=<?php echo $result['id']; ?>">
+                                href="index.php?controller=users&action=deleteUser&id=<?php echo $user['id']; ?>">
                                     <i class="bx bx-trash me-1"></i> Delete</a>
                             </div>
                         </td>
-                    </tr>
-                    <?php } }?>
+                        </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
 

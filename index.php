@@ -4,6 +4,7 @@ require_once ('lib/function.php');
 session_start();
 
 if (isset($_GET['controller'])) {
+  define ('SITE_ROOT', realpath(dirname(__FILE__)));
   $controller = $_GET['controller'];
   if (isset($_GET['action'])) {
     $action = $_GET['action'];

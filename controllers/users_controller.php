@@ -11,6 +11,9 @@ class UsersController extends BaseController
     }
     public function index()
     {
+        $user = new User();
+        $users = $user->listUser();
+        $_SESSION['listUser'] = $users;
         $this->render('list_user');
     }
     public function addUser()
@@ -29,7 +32,7 @@ class UsersController extends BaseController
             if ($name) {
                 $user->register($name, $email, $password);
                 $alert['success'] = 'Thêm thành công';
-                $this->render('list_user');
+                header('location: index.php?controller=users&action=index');
             } else {
                 $this->render('add_user');
             }
@@ -38,9 +41,31 @@ class UsersController extends BaseController
 
     public function editUser()
     {
-        $this->render('edit_user');
-    }
+        $user = new User();
 
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $data = $user->getUser($id);
+            $_SESSION['editUser'] = $data;
+            $this->render('edit_user');
+        } else {
+            $this->render('list_user');
+        } 
+    }
+    public function updateUser()
+    {
+        $user = new User();
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            if (isset($_POST['editUser'])) {
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $user->editUser($id, $name, $email);
+                header('location: index.php?controller=users&action=index');
+            }
+        }
+    }
     public function deleteUser()
     {
         $user = new User();

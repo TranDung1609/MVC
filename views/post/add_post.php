@@ -1,6 +1,4 @@
-<?php require_once('models/category.php'); ?>
-<?php $cate = new Category(); 
-?>
+
 <div class="main-content">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/ </span> Add Post </h4>
 
@@ -10,7 +8,7 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form role="form" action="index.php?controller=posts&action=createPost" method="POST" enctype="multipart/form-data">
+                    <form action="index.php?controller=posts&action=createPost" method="POST" enctype="multipart/form-data">
 
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-name">Tiêu đề</label>
@@ -42,24 +40,24 @@
                                 </select>
                             </div>
                         </div> -->
-                        
+
 
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-desc">Danh mục</label>
                             <div class="col-sm-10">
                                 <select name="category_id" class="form-control ">
+                                    
+
                                     <?php
-                                    $show_cate = $cate->listCategory();
-                                    if ($show_cate) {
-                                        while ($result = $show_cate->fetch_assoc()) {
-                                            
-                                     ?>
-                                        <option value="<?php $result['id'] ?>"><?php echo $result['name']; ?></option>
-                                    <?php } }
+                                            foreach ($_SESSION['categoryPost'] as $cate) {
+                                            ?>
+                                        <option value="<?php echo $cate['id']; ?>"><?php echo $cate['name']; ?></option>
+                                    <?php }
                                     ?>
                                 </select>
                             </div>
                         </div>
+
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
                                 <button name="addPost" type="submit" class="btn btn-success">Send</button>

@@ -39,7 +39,7 @@ class User extends DB
 		$result = $this->db->conn->query($sql);
 		return $result;
 	}
-	public function editUser($name, $email, $id)
+	public function editUser($id, $name, $email)
 	{
 		$sql = "UPDATE users SET name = '$name', email = '$email' WHERE id = $id";
 		$result = $this->db->conn->query($sql);

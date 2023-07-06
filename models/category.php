@@ -15,8 +15,8 @@ class Category extends DB
     $sql = "INSERT INTO categories (name, status)
 							VALUES ('$name', '$status')";
     $this->db->conn->query($sql);
-  }
-  
+  } 
+   
   public function listCategory()
   {
     $sql = "SELECT * FROM categories";
@@ -31,7 +31,7 @@ class Category extends DB
 		return $result;
   }
 
-  public function editCate($name, $status, $id)
+  public function editCate($id,$name, $status)
 	{
 		$sql = "UPDATE categories SET name = '$name', status = '$status' WHERE id = $id";
 		$result = $this->db->conn->query($sql);
