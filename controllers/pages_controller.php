@@ -11,7 +11,7 @@ class PagesController extends BaseController
   public function home()
   {
     $data = array(
-      'name' => 'Admin',
+      'name' => 'Trang quản trị',
     );
     $this->render('home', $data);
   }

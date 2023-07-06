@@ -2,7 +2,7 @@
 $controllers = array(
   'pages' => ['home', 'error'],
   'categories' => ['index','addCategory','addCate', 'editCategory', 'updateCategory','deleteCategory'],
-  'auth' => ['register','singUp','login','signIn','abc'],
+  'auth' => ['register','singUp','login','signIn','logOut'],
   'users' => ['create','index','editUser','deleteUser','addUser','updateUser'],
   'posts' => ['addPost','index','createPost','editPost','deletePost','updatePost']
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.

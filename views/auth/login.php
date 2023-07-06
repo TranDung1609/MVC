@@ -1,4 +1,4 @@
-<?php include_once 'views/dashboard/header.php' ?>
+<?php include(__DIR__ . '/../dashboard/header.php') ?>
 <div class="main-content">
   <div class="card">
     <div class="card-body">
@@ -23,7 +23,7 @@
       }
       ?>
 
-      <form class="mb-3" action="index.php?controller=auth&action=signIn" method="POST">
+      <form class="mb-3" action="http://localhost/phpmvc/index.php?controller=auth&action=signIn" method="POST">
         <div class="mb-3">
           <label for="email" class="form-label">Email </label>
           <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email " />

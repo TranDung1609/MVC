@@ -8,7 +8,6 @@ class CategoriesController extends BaseController
     {
         $this->folder = 'category';
     }
-
     public function index()
     { 
         $category = new Category();
@@ -25,11 +24,9 @@ class CategoriesController extends BaseController
         $newCategory = new category();
         $name = $status = NULL;
         $alert = array();
- 
         if (isset($_POST['addCategory'])) {
             $name = $_POST['name'];
             $status = $_POST['status'];
-
             if ($name && $status) {
                 $newCategory->insertCategory($name, $status);
                 $alert['success'] = 'Thêm thành công';
@@ -37,14 +34,11 @@ class CategoriesController extends BaseController
             }else {
                 $this->render('add_category');
             }
-        }
-
-        
+        } 
     }
     public function editCategory()
     {
         $category = new Category();
-
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $data = $category->getCategory($id);
@@ -54,33 +48,26 @@ class CategoriesController extends BaseController
             $this->render('list_category');
         }
     } 
-
     public function updateCategory()
     {
         $category = new Category;
-
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-
             if (isset($_POST['editCategory'])) {
                 $name = $_POST['name'];
                 $status = $_POST['status'];
                 $category->editCate($id, $name, $status);
                 header('location: index.php?controller=categories&action=index');
-            }
-            
+            } 
         }
     }
-
-    public function deleteCategory(){
+    public function deleteCategory()
+    {
         $category = new Category();
-		
 		if (isset($_GET['id'])) {
 			$id = $_GET['id'];
 			$category->deleteCategory($id);
-
 			header('Location: ?controller=categories&action=index');
 		}
-		$this->render('list_category');
     }
 }

@@ -1,3 +1,3 @@
 <?php
-  echo '<h3>'."Chào mừng đến với:".$name.'<h3>';
+  echo '<h2>'."Chào mừng đến với : ".$name.'<h2>';
   ?>

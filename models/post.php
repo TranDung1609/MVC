@@ -7,11 +7,11 @@ class Post extends DB
         $this->db = new DB();
         $this->db->connect();
     }
-    public function addPost($user_id, $category_id, $title, $body, $image, $created_at)
+    public function addPost($user_id, $category_id, $title, $body, $image, $created_at, $updated_at)
     {
 
-        $sql = "INSERT INTO posts (user_id, category_id, title, body, image, created_at) 
-        VALUES ('$user_id','$category_id','$title','$body','$image','$created_at')";
+        $sql = "INSERT INTO posts (user_id, category_id, title, body, image, created_at, updated_at) 
+        VALUES ('$user_id','$category_id','$title','$body','$image','$created_at','$updated_at')";
         $this->db->conn->query($sql);
     }
     public function listPost()
@@ -43,9 +43,9 @@ class Post extends DB
         $result = $this->db->conn->query($sql);
         return $result;
     }
-    public function editPost($id,$category_id,$title, $body,$image )
+    public function editPost($id,$category_id,$title, $body,$image, $updated_at )
 	{
-		$sql = "UPDATE posts SET category_id = '$category_id', title = '$title', body = '$body', image = '$image' WHERE id = $id";
+		$sql = "UPDATE posts SET category_id = '$category_id', title = '$title', body = '$body', image = '$image', updated_at = '$updated_at' WHERE id = $id";
 		$result = $this->db->conn->query($sql);
         return $result;
 	}

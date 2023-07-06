@@ -46,7 +46,6 @@
                             <label class="col-sm-2 col-form-label" for="basic-default-desc">Danh mục</label>
                             <div class="col-sm-10">
                                 <select name="category_id" class="form-control ">
-                                    
 
                                     <?php
                                             foreach ($_SESSION['categoryPost'] as $cate) {

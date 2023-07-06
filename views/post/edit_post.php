@@ -19,7 +19,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="basic-default-name">Tiêu đề</label>
                                 <div class="col-sm-10">
-                                    <input type="text" value="<?php echo $result['title']; ?>" class="form-control" name="title" placeholder="Tên" />
+                                <textarea name="title" class="form-control"  rows="1" placeholder="Title"><?php echo $result['title']; ?></textarea>
                                 </div>
                             </div>
                             <div class="row mb-3">

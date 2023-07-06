@@ -52,6 +52,7 @@ class AuthController extends BaseController
 					echo "<script>alert('đăng ký thành công')</script>";
 
 					header('Location: login.php');
+					// header('location: http://localhost/phpmvc/views/auth/login.php');
 				}
 			}
 		}
@@ -65,8 +66,8 @@ class AuthController extends BaseController
 			$password = md5($_POST['password']);
 
 			if (empty($_POST['email']) || empty($_POST['password'])) {
-
 				header('Location: register.php');
+				// header('location: http://localhost/phpmvc/views/auth/register.php');
 			}
 			if ($email) {
 				$result = $user->login($email, $password);
@@ -76,9 +77,10 @@ class AuthController extends BaseController
 					$data = $result->fetch_array(); /*lấy dữ liệu tương ứng với username và password nhập*/
 					$_SESSION['user'] = $data; /*lưu session*/
 					
-					header('Location: index.php');
+					header('Location: http://localhost/phpmvc/index.php');
 				} else {
 					header('Location: login.php');
+					// header('location: http://localhost/phpmvc/views/auth/login.php');
 				}
 				
 				// if (mysqli_num_rows($result)) {
@@ -105,5 +107,11 @@ class AuthController extends BaseController
 			
 		}
 		
+	}
+	public function logOut()
+	{
+		unset($_SESSION['user']);
+		session_destroy();
+		header('location:http://localhost/phpmvc/login.php');
 	}
 }
